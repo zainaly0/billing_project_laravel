@@ -14,6 +14,7 @@ Route::post('/create-add-party', [PartyController::class, 'createParty'])->name(
 Route::get('manage-parties', [PartyController::class, 'index'])->name('manage-parties');
 Route::get('/edit-party/{id}', [PartyController::class, 'editParty'])->name('edit-party');
 Route::put('/update-party/{id}', [PartyController::class, 'updateParty'])->name('update-party');
+Route::delete('/delete-party/{party}', [PartyController::class, 'deleteParty'])->name('delete-party');
 
 #GST bill routes
 Route::get('add-gst-bill', [GstBillController::class, 'addGstBill'])->name('add-gst-bill');
