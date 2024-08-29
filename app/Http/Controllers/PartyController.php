@@ -47,4 +47,17 @@ class PartyController extends Controller
       Party::create($params);
       return redirect()->route('addparty')->withStatus("party created successfully");
    }
+
+   public function editparty($party_id)
+   {
+
+      $data['party'] = Party::find($party_id);
+      // dd($party_id);
+      return view('party.edit', $data);
+   }
+
+   public function updateParty(Request $request){
+      
+
+   }
 }
