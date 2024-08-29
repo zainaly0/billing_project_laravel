@@ -32,7 +32,7 @@ class PartyController extends Controller
       $req->validate([
          'party_name' => 'required',
          'full_name' => 'required|string|min:2|max:20',
-         'phone_no' => 'required|numeric|min:10|max:10',
+         'phone_no' => 'required',
          'address' => 'required|max:255',
 
          "account_holder_name" => 'required|string|min:2|max:20',
@@ -56,8 +56,23 @@ class PartyController extends Controller
       return view('party.edit', $data);
    }
 
-   public function updateParty(Request $request){
-      
+   public function updateParty(Request $request, $id){
+      $request->validate([
+         'party_name' => 'required',
+         'full_name' => 'required|string|min:2|max:20',
+         'phone_no' => 'required',
+         'address' => 'required|max:255',
+
+         "account_holder_name" => 'required|string|min:2|max:20',
+         "account_no" => 'required|numeric|max:30',
+         "bank_name" => 'required|max:255',
+         'ifsc_code' => 'required|max:50',
+         'branch_address' => 'required|max:255'
+      ]);
+      $params = $request->all();
+      Party::where('id', $id)->update($params);
+      return redirect()->route('manage-parties')->withStatus('party updateed succesfully');
+
 
    }
 }
