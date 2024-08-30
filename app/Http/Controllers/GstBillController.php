@@ -12,7 +12,7 @@ class GstBillController extends Controller
 {
     public function index()
     {
-        $bills = GstBill::with('party')->get();
+        $bills = GstBill::where('is_deleted', 0)->with('party')->get();
         return view('gst-bill.index', compact('bills'));
     }
 
