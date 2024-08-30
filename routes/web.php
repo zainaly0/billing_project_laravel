@@ -4,6 +4,7 @@ use App\Http\Controllers\AppController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PartyController;
 use App\Http\Controllers\GstBillController;
+use App\Http\Controllers\VendorInvoice;
 
 #index page
 Route::get('/', [AppController::class, 'dashboard']);
@@ -25,6 +26,8 @@ Route::post('/create-gst-bill', [GstBillController::class, 'createGstBill'])->na
 
 //soft deleted route
 Route::delete('/delete/{table}{id}', [AppController::class, 'delete'])->name('delete');
+Route::resource('vendor-invoice', VendorInvoice::class);
+
 
 
 
